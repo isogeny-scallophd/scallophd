@@ -1,5 +1,7 @@
 #!/usr/bin/env sage
 proof.all(False)
+pari.allocatemem(16 * 10^9)  # 16G
+
 import ast
 
 idl_f = open(sys.argv[1])
