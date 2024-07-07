@@ -115,14 +115,14 @@ import itertools
 vbnd = ceil(sqrt(normγ/p))-1  # pv^2<nγ iff v^2<nγ/p iff v<sqrt(nγ/p) iff v<ceil(sqrt(nγ/p))
 assert p*vbnd^2 < normγ
 for v in range(1,vbnd+1):
-    assert nf1(v,0) <= normγ
+    assert p*nf1(v,0) <= normγ
     wbnds = (p*nf1(v,polygen(QQ)) - normγ).roots(multiplicities=False, ring=QQbar)
     wbnd0 = floor(min(wbnds)) + 1
     wbnd1 = ceil(max(wbnds)) - 1
     assert p*nf1(v,wbnd0) <= normγ < p*nf1(v,wbnd0-1)
     assert p*nf1(v,wbnd1) <= normγ < p*nf1(v,wbnd1+1)
     for w in range(wbnd0, wbnd1+1):
-        assert nf1(v,w) <= normγ
+        assert p*nf1(v,w) <= normγ
         eqn = nf1 + p*nf1(v,w) - normγ
         rhs = -eqn.monomial_coefficient(R.one())
         assert rhs > 0
